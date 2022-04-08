@@ -25,11 +25,11 @@ func _on_Button_pressed():
 	var file := File.new()
 	if file.open(path, File.READ) != OK:
 		return
-	var program := file.get_buffer(file.get_len())
-	file.close()
 	
-	for i in program.size():
-		_cpu.memory[0x40 + i] = program[i]
+	for i in file.get_len() >> 1:
+		_cpu.memory[0x40 + i] = file.get_16()
+
+	file.close()
 	
 	print("Program loaded")
 
