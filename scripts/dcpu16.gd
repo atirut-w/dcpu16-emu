@@ -22,19 +22,19 @@ func _reset() -> void:
 	for i in range(0x20, 0xf0):
 		memory[i] = (i - 0x20) - 1
 
-	memory[0x1c] = 0x40
+	memory[0x1c] = 0
 
 
 func _update_special_regs() -> void:
 	var pc := memory[0x1c]
 
-	memory[0x1e] = memory[memory[pc + 1]]
-	memory[0x1f] = memory[pc + 1]
+	memory[0x1e] = memory[memory[0x40 + pc + 1]]
+	memory[0x1f] = memory[0x40 + pc + 1]
 
 
 func op():
 	_update_special_regs()
-	var word := memory[memory[0x1c]]
+	var word := memory[0x40 + memory[0x1c]]
 	memory[0x1c] += 1
 	memory[0x1c] &= 0xffff
 
