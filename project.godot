@@ -8,9 +8,20 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "DCPU16",
+"language": "GDScript",
+"path": "res://scripts/dcpu16.gd"
+} ]
+_global_script_class_icons={
+"DCPU16": ""
+}
+
 [application]
 
 config/name="DCPU16 Emulator"
+run/main_scene="res://scenes/cputest/cputest.tscn"
 config/icon="res://icon.png"
 
 [physics]
