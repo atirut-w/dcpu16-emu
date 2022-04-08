@@ -3,11 +3,11 @@ extends Reference
 # An emulator for the DCPU-16 processor.
 
 
-var memory: PoolByteArray
+var memory: PoolIntArray
 
 
 func _init() -> void:
-	memory = PoolByteArray()
+	memory = PoolIntArray()
 	for _i in range(0, 0x10000):
 		memory.append(0)
 
