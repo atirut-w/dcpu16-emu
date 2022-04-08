@@ -36,7 +36,7 @@ func op():
 	_update_special_regs()
 	var word := memory[memory[0x1c]]
 	memory[0x1c] += 1
-	memory[0x1c] %= 0x10000
+	memory[0x1c] &= 0xffff
 
 	var opcode := word & 0x1f
 	var b := (word >> 5) & 0x1f
