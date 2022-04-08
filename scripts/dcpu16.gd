@@ -17,6 +17,6 @@ func _init() -> void:
 
 
 func op():
-	var pc := memory[0x1c]
-	var word := memory[pc] + (memory[pc] * 0x100)
-	print("%04x" % word)
+	var word := memory[memory[0x1c]]
+	memory[0x1c] += 1
+	memory[0x1c] %= 0x10000
