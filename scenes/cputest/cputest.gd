@@ -25,6 +25,7 @@ func _on_Button_pressed():
 	var file := File.new()
 	if file.open(path, File.READ) != OK:
 		return
+	file.endian_swap = true
 	
 	for i in file.get_len() >> 1:
 		_cpu.memory[0x40 + i] = file.get_16()
