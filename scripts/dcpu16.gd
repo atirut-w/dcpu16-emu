@@ -19,7 +19,7 @@ func reset() -> void:
 	for i in range(0x00, 0x08):
 		memory[i] = 0
 
-	for i in range(0x20, 0xf0):
+	for i in range(0x20, 0x40):
 		memory[i] = _unsign((i - 0x20) - 1)
 
 	memory[0x1c] = 0
