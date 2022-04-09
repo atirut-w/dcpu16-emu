@@ -20,7 +20,7 @@ func reset() -> void:
 		memory[i] = 0
 
 	for i in range(0x20, 0xf0):
-		memory[i] = (i - 0x20) - 1
+		memory[i] = _unsign((i - 0x20) - 1)
 
 	memory[0x1c] = 0
 
@@ -30,6 +30,20 @@ func _update_special_regs() -> void:
 
 	memory[0x1e] = memory[memory[0x40 + pc + 1]]
 	memory[0x1f] = memory[0x40 + pc + 1]
+
+
+func _unsign(x: int) -> int:
+	if x < 0:
+		return x + 0x10000
+	else:
+		return x
+
+
+func _sign(x: int) -> int:
+	if x > 0x7fff:
+		return x - 0x10000
+	else:
+		return x
 
 
 func op():
