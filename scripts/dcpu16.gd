@@ -55,5 +55,12 @@ func op():
 				memory[0x1d] = 0x0001
 			else:
 				memory[0x1d] = 0x0
+		0x03:
+			memory[b] -= memory[a]
+			if memory[b] < 0:
+				memory[b] += 0x10000
+				memory[0x1d] = 0xffff
+			else:
+				memory[0x1d] = 0x0
 		_:
 			push_error("Unknown opcode: 0x%x" % opcode)
