@@ -4,7 +4,7 @@ extends Reference
 
 
 var memory: PoolIntArray
-var hardwares: Array
+var components: Array
 
 
 func _init() -> void:
@@ -64,7 +64,7 @@ func op():
 		0x00:
 			match b:
 				0x10:
-					memory[a] = hardwares.size()
+					memory[a] = components.size()
 				_:
 					push_error("Unknown special opcode: 0x%x" % opcode)
 		0x01:
