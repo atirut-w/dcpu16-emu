@@ -112,5 +112,22 @@ func op():
 			else:
 				memory[b] = 0
 				memory[0x1d] = 0
+		0x0a:
+			memory[b] &= memory[a]
+		0x0b:
+			memory[b] |= memory[a]
+		0x0c:
+			memory[b] ^= memory[a]
+		0x0d:
+			memory[b] >>= memory[a]
+			memory[0x1d] = ((memory[b] << 16) >> memory[a]) & 0xffff
+		0x0e:
+			memory[b] = _unsign(_sign(memory[b]) >> memory[a])
+			memory[b] &= 0xffff
+			memory[0x1d] = ((memory[b] << 16) >> memory[a]) & 0xffff
+		0x0f:
+			memory[b] <<= memory[a]
+			memory[b] &= 0xffff
+			memory[0x1d] = ((memory[b] << memory[a]) >> 16) & 0xffff
 		_:
 			push_error("Unknown opcode: 0x%x" % opcode)
