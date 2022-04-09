@@ -10,12 +10,12 @@ func _init() -> void:
 	memory = PoolIntArray()
 	for _i in range(0, 0x10000):
 		memory.append(0)
-	_reset()
+	reset()
 	
 	print("DCPU-16 emulator initialized.")
 
 
-func _reset() -> void:
+func reset() -> void:
 	for i in range(0x00, 0x08):
 		memory[i] = 0
 
