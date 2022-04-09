@@ -53,5 +53,7 @@ func op():
 			if memory[b] > 0xffff:
 				memory[b] &= 0xffff
 				memory[0x1d] = 0x0001
+			else:
+				memory[0x1d] = 0x0
 		_:
 			push_error("Unknown opcode: 0x%x" % opcode)
