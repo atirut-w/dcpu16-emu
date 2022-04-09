@@ -84,5 +84,20 @@ func op():
 			memory[b] = _unsign(_sign(memory[b]) * _sign(memory[a]))
 			memory[b] &= 0xffff
 			memory[0x1d] = ((memory[b] * memory[a]) >> 16) & 0xffff
+		0x06:
+			if a != 0:
+				memory[b] /= memory[a]
+				memory[0x1d] = ((memory[b] << 16) / memory[a]) & 0xffff
+			else:
+				memory[b] = 0
+				memory[0x1d] = 0
+		0x07:
+			if a != 0:
+				memory[b] = _unsign(_sign(memory[b]) / _sign(memory[a]))
+				memory[b] &= 0xffff
+				memory[0x1d] = ((memory[b] << 16) / memory[a]) & 0xffff
+			else:
+				memory[b] = 0
+				memory[0x1d] = 0
 		_:
 			push_error("Unknown opcode: 0x%x" % opcode)
