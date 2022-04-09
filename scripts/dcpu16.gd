@@ -78,6 +78,7 @@ func op():
 				memory[0x1d] = 0x0
 		0x04:
 			memory[b] *= memory[a]
+			memory[b] &= 0xffff
 			memory[0x1d] = ((memory[b] * memory[a]) >> 16) & 0xffff
 		_:
 			push_error("Unknown opcode: 0x%x" % opcode)
