@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func _physics_process(_delta: float):
 	if _running == true:
-		_cpu.op()
+		_cpu.tick()
 
 
 func _on_Button_pressed():
