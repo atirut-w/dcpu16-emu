@@ -85,7 +85,10 @@ func _op() -> void:
 						memory[0x03] = hw.manufacturer & 0xffff
 						memory[0x04] = hw.manufacturer >> 16
 				0x12:
-					(components[memory[a]] as DCPUComponent)._interrupt()
+					if memory[a] > components.size() -1:
+						push_error("Invalid component index.")
+					else:
+						(components[memory[a]] as DCPUComponent)._interrupt()
 				_:
 					push_error("Unknown special opcode: 0x%x" % opcode)
 		0x01:
