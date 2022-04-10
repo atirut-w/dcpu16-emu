@@ -80,6 +80,8 @@ func tick() -> void:
 							memory[0x02] = hw.version & 0xffff
 							memory[0x03] = hw.manufacturer & 0xffff
 							memory[0x04] = hw.manufacturer >> 16
+					0x12:
+						(components[memory[a]] as DCPUComponent)._interrupt()
 					_:
 						push_error("Unknown special opcode: 0x%x" % opcode)
 			0x01:
