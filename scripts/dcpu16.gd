@@ -71,12 +71,15 @@ func tick() -> void:
 					0x10:
 						memory[a] = components.size()
 					0x11:
-						var hw := components[memory[a]] as DCPUComponent
-						memory[0x00] = hw.id & 0xffff
-						memory[0x01] = hw.id >> 16
-						memory[0x02] = hw.version & 0xffff
-						memory[0x03] = hw.manufacturer & 0xffff
-						memory[0x04] = hw.manufacturer >> 16
+						if memory[a] > components.size() - 1:
+							push_error("Invalid component index.")
+						else:
+							var hw := components[memory[a]] as DCPUComponent
+							memory[0x00] = hw.id & 0xffff
+							memory[0x01] = hw.id >> 16
+							memory[0x02] = hw.version & 0xffff
+							memory[0x03] = hw.manufacturer & 0xffff
+							memory[0x04] = hw.manufacturer >> 16
 					_:
 						push_error("Unknown special opcode: 0x%x" % opcode)
 			0x01:
