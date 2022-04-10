@@ -7,6 +7,8 @@ var id: int
 var version: int
 var manufacturer: int
 
+var _cpu: DCPU16
+
 
 func _interrupt():
-	pass
+    pass
