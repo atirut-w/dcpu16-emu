@@ -50,7 +50,7 @@ func _sign(x: int) -> int:
 
 func tick() -> void:
 	_update_special_regs()
-	
+
 	if wait_cycles > 0:
 		wait_cycles -= 1
 	else:
@@ -70,6 +70,13 @@ func tick() -> void:
 				match b:
 					0x10:
 						memory[a] = components.size()
+					0x11:
+						var hw := components[memory[a]] as DCPUComponent
+						memory[0x00] = hw.id & 0xffff
+						memory[0x01] = hw.id >> 16
+						memory[0x02] = hw.version & 0xffff
+						memory[0x03] = hw.manufacturer & 0xffff
+						memory[0x04] = hw.manufacturer >> 16
 					_:
 						push_error("Unknown special opcode: 0x%x" % opcode)
 			0x01:

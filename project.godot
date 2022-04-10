@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "DCPU16",
 "language": "GDScript",
 "path": "res://scripts/dcpu16.gd"
+}, {
+"base": "Reference",
+"class": "DCPUComponent",
+"language": "GDScript",
+"path": "res://scripts/dcpu_component.gd"
 } ]
 _global_script_class_icons={
-"DCPU16": ""
+"DCPU16": "",
+"DCPUComponent": ""
 }
 
 [application]
