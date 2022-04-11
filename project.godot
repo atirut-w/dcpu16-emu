@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/dcpu16.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "DCPUComponent",
 "language": "GDScript",
 "path": "res://scripts/dcpu_component.gd"

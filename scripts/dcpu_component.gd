@@ -1,5 +1,5 @@
 class_name DCPUComponent
-extends Reference
+extends Node
 # Base class for DCPU-16 components.
 
 
