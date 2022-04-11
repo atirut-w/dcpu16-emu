@@ -8,6 +8,10 @@ var _running := false
 func _ready() -> void:
 	_cpu = DCPU16.new()
 
+	var screen := LEM1802.new()
+	add_child(screen)
+	_cpu.components.append(screen)
+
 
 func _physics_process(_delta: float):
 	if _running == true:

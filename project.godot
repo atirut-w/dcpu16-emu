@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "DCPUComponent",
 "language": "GDScript",
 "path": "res://scripts/dcpu_component.gd"
+}, {
+"base": "DCPUComponent",
+"class": "LEM1802",
+"language": "GDScript",
+"path": "res://scripts/lem1802.gd"
 } ]
 _global_script_class_icons={
 "DCPU16": "",
-"DCPUComponent": ""
+"DCPUComponent": "",
+"LEM1802": ""
 }
 
 [application]
